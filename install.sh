@@ -5,5 +5,13 @@ do
     [[ "$f" == ".git" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
 
-    echo "$f"
+    ln -snfv ~/dotfiles/"$f" ~/
 done
+
+cat << END
+
+**************************************************
+DOTFILES SETUP FINISHED! bye.
+**************************************************
+
+END
