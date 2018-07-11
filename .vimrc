@@ -1,6 +1,6 @@
 syntax enable
-set background=light
-colorscheme solarized
+set background=dark
+" colorscheme solarized
 set t_ut=
 
 set encoding=utf-8
@@ -39,11 +39,31 @@ set mouse=a       " マウス使用可
 " 行頭・行末で左右移動で前後の行に移動
 set whichwrap=b,s,h,l,<,>,[,],~
 
-" jjでエスケープの変わり
-inoremap jj <Esc>
+" enable backspace
+set backspace=indent,eol,start
 
-" [ って打ったら [] って入力されてしかも括弧の中にいる(以下同様)
-imap [ []<left>
-imap { {}<left>
-imap ( ()<left>
+" dein detup
+let s:dein_dir = $HOME . '/.vim/bundle'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+endif
+
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  " Load and cached toml
+  " all plugins listed in toml
+  call dein#load_toml(s:dein_dir . '/dein.toml', {'lazy': 0})
+  call dein#load_toml(s:dein_dir . '/dein_lazy.toml', {'lazy': 1})
+  call dein#end()
+  call dein#save_state()
+endif
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif

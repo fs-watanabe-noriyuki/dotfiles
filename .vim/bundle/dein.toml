@@ -1,0 +1,29 @@
+# [dein.toml]
+
+# required
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# Lighline
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+# tender
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+
+# visualize space
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+# visualize indent
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+# tree
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+# unite
+[[plugins]]
+repo = 'Shougo/unite.vim'

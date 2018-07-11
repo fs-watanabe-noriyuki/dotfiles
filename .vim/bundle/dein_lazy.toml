@@ -1,0 +1,58 @@
+# [dein_lazy.toml]
+
+# Lessのシンタックスハイライト
+[[plugins]]
+repo = 'groenewege/vim-less'
+on_ft = ['less']
+
+
+# Markdownのシンタックスハイライト
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+on_ft = ['markdown']
+hook_source = ''' " {{{
+    " 自動で折りたたまないようにする
+    let g:vim_markdown_folding_disabled = 1
+''' # }}}
+
+# Markdownのプレビュー
+[[plugins]]
+repo = 'kannokanno/previm'
+depends = ['open-browser.vim']
+on_ft = ['markdown']
+hook_source = ''' " {{{
+    " リアルタイムプレビューを有効化
+    let g:previm_enable_realtime = 1
+''' # }}}
+
+# Go言語の統合サポート
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = ['go']
+hook_source = ''' " {{{
+    " GoFmtコマンドを保存時に走らせる
+    augroup GoFmtVimGoCommands
+        autocmd!
+        autocmd BufWritePre *.go GoFmt
+    augroup END
+''' # }}}
+
+# TOMLのシンタックスハイライト
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+# YAMLのシンタックスハイライト
+[[plugins]]
+repo = 'chase/vim-ansible-yaml'
+on_ft = ['yaml']
+
+# ES6のシンタックスハイライト
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = ['javascript']
+
+# rubyの閉じタグ
+[[plugins]]
+repo = 'tpope/vim-endwise'
+on_ft = ['ruby']

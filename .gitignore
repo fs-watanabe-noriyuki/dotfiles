@@ -1,0 +1,17 @@
+# まずは全部ignore
+/*
+/.*
+# 管理対象にしたいファイルだけignoreから除外する
+!/Makefile
+!/etc
+!/.vim/bundle/dein.toml
+!/.vim/bundle/dein_lazy.toml
+!/.bash_profile
+!/.zshrc
+!/.tmux.conf
+!/.gitignore
+!/.vimrc
+!/.bashrc
+# 管理対象のディレクトリ内でも除外したいものはこの下に追加する
+.DS_Store
+.vim/bundle

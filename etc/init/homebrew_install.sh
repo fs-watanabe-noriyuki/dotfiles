@@ -11,7 +11,7 @@ which brew >/dev/null 2>&1 && brew update
 
 echo "ok. run brew upgrade..."
 
-brew upgrade --all
+brew upgrade
 
 formulas=(
     git
@@ -21,10 +21,23 @@ formulas=(
     openssl
     peco
     tig
-    mysql
+    mysql@5.7
+    tmux
+    reattach-to-user-namespace
+    sl
+    redis
+    nginx
+    pstree
+    cmake
+    awscli
+    boost
+    rbenv
+    jq
+    zsh
+    zplug
+    'vim --with-override-system-vi'
+    go
 )
-
-"brew tap..."
 
 echo "start brew install apps..."
 for formula in "${formulas[@]}"; do

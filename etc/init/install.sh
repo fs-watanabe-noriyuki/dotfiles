@@ -8,6 +8,8 @@ do
     ln -snfv ~/dotfiles/"$f" ~/
 done
 
+source ~/.bash_profile
+
 cat << END
 
 **************************************************

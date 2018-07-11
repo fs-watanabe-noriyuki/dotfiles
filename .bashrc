@@ -1,26 +1,15 @@
 ## init
-eval "$(rbenv init -)"
-
-## const
-PS1="\W $"
-export CLICOLOR=1
-export LESS='-MR'
-
-## path
-export GOPATH=$HOME/.go
-export TOOL_PATH=$HOME/development/tool
-export RBENV_PATH=$HOME/.rbenv
-
-## migarte PATH
-export PATH=$PATH:$GOPATH/bin:$RBENV_PATH/bin:$TOOL_PATH/bin:$HOME/bin:/usr/local/bin
+# eval "$(rbenv init -)"
 
 ## Command Alias
 alias ll='ls -altrh'
+alias ta='tmux a'
 
 # TODO: init directory
-alias work='cd ~/development/workspace'
-alias data='cd ~/development/workspace/data'
-alias tool="cd ~/development/tool"
+alias dev='cd ~/work/develop'
+alias data='cd ~/work/data/data'
+alias tool="cd ~/work/tool"
+alias dot="cd ~/dotfiles"
 
 # Rails command
 alias be='bundle exec'
