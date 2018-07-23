@@ -1,6 +1,3 @@
-## init
-# eval "$(rbenv init -)"
-
 ## Command Alias
 alias ll='ls -altrh'
 alias ta='tmux a'

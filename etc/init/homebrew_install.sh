@@ -37,6 +37,9 @@ formulas=(
     zplug
     'vim --with-override-system-vi'
     go
+    phantomjs
+    source-highlight
+    'openresty/brew/openresty'
 )
 
 echo "start brew install apps..."
