@@ -1,6 +1,5 @@
 ## Command Alias
 alias ll='ls -altrh'
-alias ta='tmux a'
 
 # TODO: init directory
 alias dev='cd ~/work/develop'
@@ -13,6 +12,7 @@ alias be='bundle exec'
 
 # git command
 alias co='git checkout'
+alias ggpush='git push origin HEAD'
 
 # rubocop
 alias rubocop_diff='rubocop $( git diff --cached --name-only --diff-filter=AMRC | grep -e ".*\.rb" | paste -s - )'

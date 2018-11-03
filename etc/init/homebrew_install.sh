@@ -40,11 +40,27 @@ formulas=(
     phantomjs
     source-highlight
     'openresty/brew/openresty'
+    pwgen
+    postgresql
 )
 
 echo "start brew install apps..."
 for formula in "${formulas[@]}"; do
     brew install $formula || brew upgrade $formula
+done
+
+casks=(
+    evernote
+    skitch
+    slack
+    alfred
+    iterm2
+    docker
+)
+
+echo "start brew cask install apps..."
+for cask in "${casks[@]}"; do
+    brew cask install $cask
 done
 
 brew cleanup
