@@ -37,11 +37,13 @@ formulas=(
     zplug
     'vim --with-override-system-vi'
     go
-    phantomjs
+    glide
     source-highlight
     'openresty/brew/openresty'
     pwgen
     postgresql
+    ndenv
+    yarn
 )
 
 echo "start brew install apps..."
@@ -56,6 +58,9 @@ casks=(
     alfred
     iterm2
     docker
+    xmind
+    java
+    phantomjs
 )
 
 echo "start brew cask install apps..."

@@ -10,6 +10,7 @@
 !/.zshrc
 !/.tmux.conf
 !/.gitignore
+!/.gitignore_global
 !/.vimrc
 !/.bashrc
 # 管理対象のディレクトリ内でも除外したいものはこの下に追加する

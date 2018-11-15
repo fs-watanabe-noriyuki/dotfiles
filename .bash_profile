@@ -19,15 +19,20 @@ function readlink_f () {
 
 ## path
 export GOPATH=$HOME/go
+export GOROOT=$(dirname $(dirname $(readlink_f /usr/local/bin/go)))
 export TOOL_PATH=$HOME/development/tool
 export RBENV_PATH=$HOME/.rbenv
-export GOROOT=$(dirname $(dirname $(readlink_f /usr/local/bin/go)))
+export NDENV_PATH=$HOME/.ndenv
+export YARN_PATH=$HOME/.yarn
 
 # migarte PATH
-export PATH="$PATH:$GOPATH/bin:$RBENV_PATH/bin:$TOOL_PATH/bin:$HOME/bin:/usr/local/bin:/usr/local/opt/mysql@5.7/bin"
+export PATH="$PATH:$GOPATH/bin:$RBENV_PATH/bin:$NDENV_PATH/bin:$YARN_PATH/bin:$TOOL_PATH/bin:$HOME/bin:/usr/local/bin:/usr/local/opt/mysql@5.7/bin"
 
 ## rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+## rbenv
+if which ndenv > /dev/null; then eval "$(ndenv init -)"; fi
 
 test -r ~/.bashrc && . ~/.bashrc
 
