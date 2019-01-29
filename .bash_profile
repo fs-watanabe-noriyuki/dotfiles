@@ -25,6 +25,9 @@ export RBENV_PATH=$HOME/.rbenv
 export NDENV_PATH=$HOME/.ndenv
 export YARN_PATH=$HOME/.yarn
 
+## java 1.8
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
 # migarte PATH
 export PATH="$PATH:$GOPATH/bin:$RBENV_PATH/bin:$NDENV_PATH/bin:$YARN_PATH/bin:$TOOL_PATH/bin:$HOME/bin:/usr/local/bin:/usr/local/opt/mysql@5.7/bin"
 

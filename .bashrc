@@ -3,7 +3,7 @@ alias ll='ls -altrh'
 
 # TODO: init directory
 alias dev='cd ~/work/develop'
-alias data='cd ~/work/data/data'
+alias data='cd ~/work/data'
 alias tool="cd ~/work/tool"
 alias dot="cd ~/dotfiles"
 
@@ -31,3 +31,5 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
+## tmux
+alias tmuxbd="tmux new-session \; source-file ~/.tmux/bd_session"
