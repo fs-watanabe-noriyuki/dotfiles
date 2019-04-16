@@ -27,3 +27,8 @@ repo = 'scrooloose/nerdtree'
 # unite
 [[plugins]]
 repo = 'Shougo/unite.vim'
+
+# solarized
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+

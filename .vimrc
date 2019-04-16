@@ -1,8 +1,3 @@
-syntax enable
-set background=dark
-" colorscheme solarized
-set t_ut=
-
 set encoding=utf-8
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set fileformats=unix,dos,mac
@@ -67,3 +62,9 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+
+syntax enable
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
+

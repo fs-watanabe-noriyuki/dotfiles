@@ -44,6 +44,8 @@ formulas=(
     postgresql
     ndenv
     yarn
+    gradle
+    translate-shell
 )
 
 echo "start brew install apps..."
