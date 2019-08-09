@@ -25,6 +25,10 @@ export RBENV_PATH=$HOME/.rbenv
 export NDENV_PATH=$HOME/.ndenv
 export YARN_PATH=$HOME/.yarn
 
+## for bundle install mysql
+## @see https://github.com/brianmario/mysql2/pull/1051
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+
 ## java 1.8
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 

@@ -46,6 +46,7 @@ formulas=(
     yarn
     gradle
     translate-shell
+    oath-toolkit
 )
 
 echo "start brew install apps..."
