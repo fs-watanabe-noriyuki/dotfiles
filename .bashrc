@@ -12,7 +12,7 @@ alias be='bundle exec'
 
 # git command
 alias co='git checkout'
-alias ggpush='git push origin HEAD'
+alias ggpush='if [ -z "`git branch --contains | grep -e develop -e master`" ]; then git push origin HEAD; else echo "hey, this branch is protected"; fi'
 
 # rubocop
 alias rubocop_diff='rubocop $( git diff --cached --name-only --diff-filter=AMRC | grep -e ".*\.rb" | paste -s - )'
@@ -34,12 +34,3 @@ fi
 ## tmux
 alias tmuxbd="tmux new-session \; source-file ~/.tmux/bd_session"
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash
