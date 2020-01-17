@@ -14,39 +14,38 @@ echo "ok. run brew upgrade..."
 brew upgrade
 
 formulas=(
-    git
-    wget
-    curl
-    tree
-    openssl
-    peco
-    tig
-    mysql@5.7
-    tmux
-    reattach-to-user-namespace
-    sl
-    redis
-    nginx
-    pstree
-    cmake
     awscli
     boost
-    rbenv
-    jq
-    zsh
-    zplug
-    'vim --with-override-system-vi'
-    go
+    cmake
+    curl
+    git
     glide
-    source-highlight
-    'openresty/brew/openresty'
-    pwgen
-    postgresql
-    ndenv
-    yarn
+    go
     gradle
+    imagemagick@6
+    jq
+    maven
+    mysql@5.7
+    ndenv
+    nginx
+    openssl
+    postgresql
+    protobuf
+    pstree
+    pwgen
+    rbenv
+    reattach-to-user-namespace
+    redis
+    sl
+    source-highlight
+    tig
+    tmux
     translate-shell
-    oath-toolkit
+    tree
+    wget
+    yarn
+    'openresty/brew/openresty'
+    'vim --with-override-system-vi'
 )
 
 echo "start brew install apps..."
@@ -55,15 +54,15 @@ for formula in "${formulas[@]}"; do
 done
 
 casks=(
+    alfred
+    docker
     evernote
+    iterm2
+    java
+    notion
+    phantomjs
     skitch
     slack
-    alfred
-    iterm2
-    docker
-    xmind
-    java
-    phantomjs
 )
 
 echo "start brew cask install apps..."

@@ -7,3 +7,8 @@
 
 # ndenv
 .node-version
+
+# erb
+erd.pdf
+account_db_schema.sql
+global_db_schema.sql

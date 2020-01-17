@@ -17,6 +17,7 @@ if !has('gui_running')
 endif
 
 set cursorline    " 編集行の表示を変える
+set cursorcolumn  " 編集列の表示を変える
 set number        " 行番号表示
 set expandtab     " タブの代わりに空白を使う
 set tabstop=4     " タブの幅
@@ -30,6 +31,7 @@ set ignorecase    " 検索時に大文字小文字を区別しない
 set smartcase     " 検索時に大文字を含んでいたら大小区別する
 set ruler         " 右下にカーソル位置表示
 set mouse=a       " マウス使用可
+
 
 " 行頭・行末で左右移動で前後の行に移動
 set whichwrap=b,s,h,l,<,>,[,],~
