@@ -12,7 +12,7 @@ alias be='bundle exec'
 
 # git command
 alias co='git checkout'
-alias ggpush='if [ -z "`git branch --contains | grep -e develop -e master`" ]; then git push origin HEAD; else echo "hey, this branch is protected"; fi'
+alias ggpush='if [ -z "`git rev-parse --abbrev-ref HEAD | grep -e develop -e master`" ]; then git push origin HEAD; else echo "hey, this branch is protected"; fi'
 
 # rubocop
 alias rubocop_diff='rubocop $( git diff --cached --name-only --diff-filter=AMRC | grep -e ".*\.rb" | paste -s - )'
