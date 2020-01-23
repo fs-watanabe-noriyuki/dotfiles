@@ -55,6 +55,7 @@ done
 
 casks=(
     alfred
+    karabiner-elements
     docker
     evernote
     iterm2
