@@ -33,7 +33,7 @@ export IMGMAGICK_PATH="$PATH:/usr/local/opt/imagemagick@6"
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 
 ## java 12
-export JAVA_HOME=$(/usr/libexec/java_home -v 12)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
 
 ## for ruby fork2
 OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES

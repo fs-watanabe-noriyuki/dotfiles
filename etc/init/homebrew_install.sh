@@ -28,6 +28,7 @@ formulas=(
     mysql@5.7
     ndenv
     nginx
+    nkf
     openssl
     postgresql
     protobuf
