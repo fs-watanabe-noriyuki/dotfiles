@@ -18,12 +18,13 @@ formulas=(
     boost
     cmake
     curl
+    ffmpeg
     git
-    glide
     go
     gradle
     imagemagick@6
     jq
+    libiodbc
     maven
     mysql@5.7
     ndenv
@@ -36,6 +37,7 @@ formulas=(
     rbenv
     reattach-to-user-namespace
     redis
+    shared-mime-info
     sl
     source-highlight
     tig
@@ -56,18 +58,14 @@ done
 casks=(
     alfred
     docker
-    evernote
     iterm2
     java
-    notion
-    phantomjs
-    skitch
     slack
 )
 
 echo "start brew cask install apps..."
 for cask in "${casks[@]}"; do
-    brew cask install $cask
+    brew install $cask --cask
 done
 
 brew cleanup
