@@ -22,11 +22,10 @@ function readlink_f () {
 export GOPATH=$HOME/go
 export GOROOT=$(dirname $(dirname $(readlink_f /usr/local/bin/go)))
 export TOOL_PATH=$HOME/development/tool
-export RBENV_PATH=$HOME/.rbenv
-export NDENV_PATH=$HOME/.ndenv
 export YARN_PATH=$HOME/.yarn
 export PIP_PATH="$HOME/Library/Python/2.7"
 export IMGMAGICK_PATH="$PATH:/usr/local/opt/imagemagick@6"
+export ANYENV_PATH="$HOME/.anyenv"
 
 ## for bundle install mysql
 ## @see https://github.com/brianmario/mysql2/pull/1051
@@ -39,13 +38,10 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # migarte PATH
-export PATH="$PATH:$GOPATH/bin:$RBENV_PATH/bin:$NDENV_PATH/bin:$YARN_PATH/bin:$TOOL_PATH/bin:$PIP_PATH/bin:$IMGMAGICK_PATH/bin:$HOME/bin:/usr/local/bin:/usr/local/opt/mysql@5.7/bin"
+export PATH="$PATH:$GOPATH/bin:$ANYENV_PATH/bin:$YARN_PATH/bin:$TOOL_PATH/bin:$PIP_PATH/bin:$IMGMAGICK_PATH/bin:$HOME/bin:/usr/local/bin:/usr/local/opt/mysql@5.7/bin"
 
-## rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-## rbenv
-if which ndenv > /dev/null; then eval "$(ndenv init -)"; fi
+## anyenv
+if which anyenv > /dev/null; then eval "$(anyenv init -)"; fi
 
 test -r ~/.bashrc && . ~/.bashrc
 
@@ -59,3 +55,4 @@ if [ -f "${HOME}/google-cloud-sdk/path.bash.inc" ]; then . "${HOME}/google-cloud
 
 # The next line enables shell command completion for gcloud.
 if [ -f "${HOME}/google-cloud-sdk/completion.bash.inc" ]; then . "${HOME}/google-cloud-sdk/completion.bash.inc"; fi
+

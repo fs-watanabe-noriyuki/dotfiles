@@ -14,6 +14,7 @@ echo "ok. run brew upgrade..."
 brew upgrade
 
 formulas=(
+    anyenv
     awscli
     boost
     cmake
@@ -27,7 +28,6 @@ formulas=(
     libiodbc
     maven
     mysql@5.7
-    ndenv
     nginx
     openssl
     postgresql
