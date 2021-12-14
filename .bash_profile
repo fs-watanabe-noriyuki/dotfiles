@@ -31,8 +31,8 @@ export ANYENV_PATH="$HOME/.anyenv"
 ## @see https://github.com/brianmario/mysql2/pull/1051
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 
-## java 1.8
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+## java 12
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
 
 ## for ruby fork2
 OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES

@@ -29,6 +29,7 @@ formulas=(
     maven
     mysql@5.7
     nginx
+    nkf
     openssl
     postgresql
     protobuf
@@ -57,6 +58,7 @@ done
 
 casks=(
     alfred
+    karabiner-elements
     docker
     iterm2
     java

@@ -4,21 +4,27 @@ alias ll='ls -altrh'
 # TODO: init directory
 alias dev='cd ~/work/develop'
 alias data='cd ~/work/data'
-alias tool="cd ~/work/tool"
-alias dot="cd ~/dotfiles"
+alias tool='cd ~/work/tool'
+alias dot='cd ~/dotfiles'
+alias desk='cd ~/Desktop'
 
 # Rails command
 alias be='bundle exec'
 
 # git command
 alias co='git checkout'
-alias ggpush='if [ -z "`git branch --contains | grep -e develop -e master`" ]; then git push origin HEAD; else echo "hey, this branch is protected"; fi'
+alias ggpush='if [ -z "`git rev-parse --abbrev-ref HEAD | grep -e develop -e master`" ]; then git push origin HEAD; else echo "hey, this branch is protected"; fi'
 
 # rubocop
 alias rubocop_diff='rubocop $( git diff --cached --name-only --diff-filter=AMRC | grep -e ".*\.rb" | paste -s - )'
 
-## peco
-# ls and cd
+# docker
+## access docker VM
+alias dvm='screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty'
+alias dps='docker ps'
+
+# peco
+## ls and cd
 function lscd {
    local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
    if [ ! -z "$dir" ] ; then
