@@ -23,3 +23,6 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load
+
+# for rake commaned
+setopt nonomatch

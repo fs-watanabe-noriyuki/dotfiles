@@ -34,3 +34,6 @@ fi
 ## tmux
 alias tmuxbd="tmux new-session \; source-file ~/.tmux/bd_session"
 
+## aws cli with localstack
+alias awsl='aws --endpoint-url http://localhost:4566'
+
