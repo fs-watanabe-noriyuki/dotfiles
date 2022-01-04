@@ -21,6 +21,7 @@ formulas=(
     curl
     ffmpeg
     git
+    gh
     go
     gradle
     imagemagick@6
@@ -61,6 +62,7 @@ casks=(
     iterm2
     java
     slack
+    snowflake-snowsql
 )
 
 echo "start brew cask install apps..."

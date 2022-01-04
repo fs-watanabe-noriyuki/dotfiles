@@ -43,6 +43,11 @@ export PATH="$PATH:$GOPATH/bin:$ANYENV_PATH/bin:$YARN_PATH/bin:$TOOL_PATH/bin:$P
 ## anyenv
 if which anyenv > /dev/null; then eval "$(anyenv init -)"; fi
 
+## goenv
+if which goenv > /dev/null; then eval "$(goenv init -)"; fi
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+
 test -r ~/.bashrc && . ~/.bashrc
 
 ## for secret keys
