@@ -1,4 +1,4 @@
-source ~/.bashrc
+source ~/.bash_profile
 
 # zplug settings
 export ZPLUG_HOME=/usr/local/opt/zplug
@@ -26,3 +26,5 @@ zplug load
 
 # for rake commaned
 setopt nonomatch
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

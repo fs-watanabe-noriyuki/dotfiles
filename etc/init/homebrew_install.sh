@@ -20,6 +20,7 @@ formulas=(
     cmake
     curl
     ffmpeg
+    fzf
     git
     gh
     go

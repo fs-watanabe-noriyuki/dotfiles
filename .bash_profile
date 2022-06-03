@@ -4,6 +4,7 @@ export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
 export LESS='-MR'
 export LANG=ja_JP.UTF-8
 export PS1="\W $"
+export ENV=develop
 
 ## for symbolic link path
 function readlink_f () {
@@ -19,8 +20,6 @@ function readlink_f () {
 }
 
 ## path
-export GOPATH=$HOME/go
-export GOROOT=$(dirname $(dirname $(readlink_f /usr/local/bin/go)))
 export TOOL_PATH=$HOME/development/tool
 export YARN_PATH=$HOME/.yarn
 export PIP_PATH="$HOME/Library/Python/2.7"
@@ -38,7 +37,7 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # migarte PATH
-export PATH="$PATH:$GOPATH/bin:$ANYENV_PATH/bin:$YARN_PATH/bin:$TOOL_PATH/bin:$PIP_PATH/bin:$IMGMAGICK_PATH/bin:$HOME/bin:/usr/local/bin:/usr/local/opt/mysql@5.7/bin"
+export PATH="$PATH:$ANYENV_PATH/bin:$YARN_PATH/bin:$TOOL_PATH/bin:$PIP_PATH/bin:$IMGMAGICK_PATH/bin:$HOME/bin:/usr/local/bin:/usr/local/opt/mysql@5.7/bin"
 
 ## anyenv
 if which anyenv > /dev/null; then eval "$(anyenv init -)"; fi
