@@ -58,11 +58,9 @@ for formula in "${formulas[@]}"; do
 done
 
 casks=(
-    alfred
     docker
     iterm2
     java
-    slack
     snowflake-snowsql
 )
 
