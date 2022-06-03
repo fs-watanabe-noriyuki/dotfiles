@@ -10,7 +10,7 @@ echo 'setup ruby with rbenv'
 if has "rbenv"; then
   ## 最新のRubyを入れる
   #latest=`rbenv install --list | grep -v - | tail -n 1`
-  target="2.3.1"
+  target="2.7.1"
   current=`rbenv versions | grep '*' | cut -d' ' -f 2`
   if [ "$current" != "$target" ]; then
     echo "install $target"
