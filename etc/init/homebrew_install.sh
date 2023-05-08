@@ -23,7 +23,6 @@ formulas=(
     fzf
     git
     gh
-    go
     gradle
     imagemagick@6
     jq
@@ -36,7 +35,6 @@ formulas=(
     protobuf
     pstree
     pwgen
-    rbenv
     reattach-to-user-namespace
     redis
     shared-mime-info
@@ -46,8 +44,10 @@ formulas=(
     tmux
     translate-shell
     tree
+    unixodbc
     wget
     yarn
+    zplug
     'openresty/brew/openresty'
     'vim --with-override-system-vi'
 )
@@ -60,10 +60,15 @@ done
 casks=(
     alfred
     docker
+    google-cloud-sdk
+    hammerspoon
     iterm2
     java
+    karabiner-elements
+    sequel-ace
     slack
     snowflake-snowsql
+    visual-code-studio
 )
 
 echo "start brew cask install apps..."
