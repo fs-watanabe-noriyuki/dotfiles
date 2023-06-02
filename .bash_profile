@@ -23,12 +23,17 @@ function readlink_f () {
 export TOOL_PATH=$HOME/development/tool
 export YARN_PATH=$HOME/.yarn
 export PIP_PATH="$HOME/Library/Python/2.7"
-export IMGMAGICK_PATH="$PATH:/usr/local/opt/imagemagick@6"
+export IMGMAGICK_PATH="/opt/homebrew/opt/imagemagick@6"
 export ANYENV_PATH="$HOME/.anyenv"
+export BREW_PATH=/opt/homebrew
 
 ## for bundle install mysql
 ## @see https://github.com/brianmario/mysql2/pull/1051
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+export OPENSSL_PATH=/opt/homebrew/opt/openssl@3
+export LIBRARY_PATH=:$OPENSSL_PATH/lib
+export LDFLAGS="-L$OPENSSL_PATH/lib"
+export CPPFLAGS="-I$OPENSSL_PATH/include"
+export LD_LIBRARY_PATH="$OPENSSL_PATH/lib"
 
 ## java 11
 export JAVA_HOME=$(/usr/libexec/java_home -v 11)
@@ -41,7 +46,7 @@ export ANDROID_TOOL_PATH=$HOME/Library/Android/sdk/tools:$HOME/Library/Android/s
 OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # migarte PATH
-export PATH="$PATH:$ANYENV_PATH/bin:$YARN_PATH/bin:$TOOL_PATH/bin:$PIP_PATH/bin:$IMGMAGICK_PATH/bin:$HOME/bin:/usr/local/bin:/usr/local/opt/mysql@5.7/bin:$ANDROID_TOOL_PATH"
+export PATH="$OPENSSL_PATH/bin:$PATH:$ANYENV_PATH/bin:$YARN_PATH/bin:$TOOL_PATH/bin:$PIP_PATH/bin:$IMGMAGICK_PATH/bin:$HOME/bin:$BREW_PATH/bin:/usr/local/bin:/opt/homebrew/opt/mysql@5.7/bin:$ANDROID_TOOL_PATH"
 
 ## anyenv
 if which anyenv > /dev/null; then eval "$(anyenv init -)"; fi
@@ -60,10 +65,10 @@ test -r ~/.bash_profile_private && . ~/.bash_profile_private
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "${HOME}/google-cloud-sdk/path.bash.inc" ]; then . "${HOME}/google-cloud-sdk/path.bash.inc"; fi
+if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f "${HOME}/google-cloud-sdk/completion.bash.inc" ]; then . "${HOME}/google-cloud-sdk/completion.bash.inc"; fi
+if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'; fi
 
 # for react-native
 export REACT_EDITOR=code
