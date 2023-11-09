@@ -17,6 +17,7 @@ formulas=(
     anyenv
     awscli
     boost
+    circleci
     cmake
     curl
     ffmpeg
@@ -26,6 +27,7 @@ formulas=(
     gradle
     imagemagick@6
     jq
+    k6
     libiodbc
     maven
     mysql@5.7
@@ -37,6 +39,7 @@ formulas=(
     pwgen
     reattach-to-user-namespace
     redis
+    rustup-init
     shared-mime-info
     sl
     source-highlight
@@ -65,6 +68,7 @@ casks=(
     iterm2
     java
     karabiner-elements
+    phantomjs
     sequel-ace
     slack
     snowflake-snowsql

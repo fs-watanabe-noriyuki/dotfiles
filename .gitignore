@@ -13,6 +13,8 @@
 !/.gitignore_global
 !/.vimrc
 !/.bashrc
+!/.zshenv
+!/.zsh_aliases
 # 管理対象のディレクトリ内でも除外したいものはこの下に追加する
 .DS_Store
 .vim/bundle

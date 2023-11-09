@@ -1,10 +1,11 @@
-source ~/.bash_profile
+# load alias
+source $HOME/.zsh_aliases
 
 # zplug settings
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
-source $ZPLUG_HOME/init.zsh
+export ZPLUG_HOME=$BREW_PATH/opt/zplug
+source $BREW_PATH/opt/zplug/init.zsh
 
-# plugins
+## plugins
 zplug "plugins/git", from:oh-my-zsh
 zplug "zsh-users/zsh-autosuggestions"
 zplug "mafredri/zsh-async", from:github
@@ -13,7 +14,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 
 zplug "b4b4r07/enhancd"
 
-# Install plugins if there are plugins that have not been installed
+## Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
@@ -21,11 +22,8 @@ if ! zplug check --verbose; then
     fi
 fi
 
-# Then, source plugins and add commands to $PATH
+## Then, source plugins and add commands to $PATH
 zplug load
 
-# for rake commaned
+## for rake commaned
 setopt nonomatch
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
