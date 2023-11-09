@@ -95,3 +95,4 @@ export RUBYOPT='-W:deprecated'
 
 ## for secret enviromental variables
 test -r ~/.zsh_private && . ~/.zsh_private
+

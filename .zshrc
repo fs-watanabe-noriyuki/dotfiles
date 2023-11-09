@@ -1,3 +1,6 @@
+# load environment variables
+source $HOME/.zsh_envs
+
 # load alias
 source $HOME/.zsh_aliases
 
@@ -27,3 +30,4 @@ zplug load
 
 ## for rake commaned
 setopt nonomatch
+

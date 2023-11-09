@@ -12,6 +12,7 @@
 !/.gitignore_global
 !/.vimrc
 !/.zshenv
+!/.zsh_envs
 !/.zsh_aliases
 # 管理対象のディレクトリ内でも除外したいものはこの下に追加する
 .DS_Store
