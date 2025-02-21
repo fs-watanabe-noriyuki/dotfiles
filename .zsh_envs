@@ -1,6 +1,6 @@
 # const
 export CLICOLOR=1
-export LESSOPEN='| /opt/homebrew/Cellar/source-highlight/3.1.9_5/bin/src-hilite-lesspipe.sh %s'
+export LESSOPEN='| /opt/homebrew/Cellar/source-highlight/3.1.9_6/bin/src-hilite-lesspipe.sh %s'
 export LESS='-MR'
 export LANG=ja_JP.UTF-8
 export PS1="\W $"
@@ -18,10 +18,12 @@ add_to_path() {
   done
 }
 
-add_to_path $HOME/bin:/usr/local/bin
+add_to_path $HOME/bin
+add_to_path $HOME/.local/bin
+add_to_path /usr/local/bin
 
 ### homebrew
-export BREW_PATH=/opt/homebrew
+BREW_PATH=/opt/homebrew
 add_to_path $BREW_PATH/bin
 
 ### tools
@@ -40,7 +42,7 @@ add_to_path $HOME/Library/Python/2.7/bin
 add_to_path $BREW_PATH/opt/imagemagick@6/bin
 
 ### openssl
-add_to_path $BREW_PATH/opt/openssl@3/bin
+add_to_path $BREW_PATH/opt/openssl@1.1/bin
 
 ### MySQL5.7
 add_to_path $BREW_PATH/opt/mysql@5.7/bin
@@ -48,51 +50,175 @@ add_to_path $BREW_PATH/opt/mysql@5.7/bin
 ### TiUP
 add_to_path $HOME/.tiup/bin
 
+### bison
+add_to_path $BREW_PATH/opt/bison/bin
+
+### libxslt
+add_to_path $BREW_PATH/opt/libxslt/bin
+
+export CPPFLAGS="-I/opt/homebrew/opt/libffi/include -I/opt/homebrew/opt/libxslt/include -I/opt/homebrew/opt/openjdk@11/include"
+export LDFLAGS="-L/opt/homebrew/opt/bison/lib -L/opt/homebrew/opt/libffi/lib -L/opt/homebrew/opt/libxslt/lib"
+
 ## for bundle install mysql
 ## @see https://github.com/brianmario/mysql2/pull/1051
-export LIBRARY_PATH=:$OPENSSL_PATH/lib
-export LDFLAGS="-L$OPENSSL_PATH/lib"
-export CPPFLAGS="-I$OPENSSL_PATH/include"
-export LD_LIBRARY_PATH="$OPENSSL_PATH/lib"
+OPENSSL_PATH="$BREW_PATH/opt/openssl@1.1"
+export LIBRARY_PATH=$LIBRARY_PATH:$OPENSSL_PATH/lib
+export LDFLAGS="-L$OPENSSL_PATH/lib $LDFLAGS"
+# export RUBY_CFLAGS=-DUSE_FFI_CLOSURE_ALLOC
+export CPPFLAGS="-I$OPENSSL_PATH/include $CPPFLAGS"
+export LD_LIBRARY_PATH="$OPENSSL_PATH/lib:$LD_LIBRARY_PATH"
+
 
 ## java 11
-export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+#export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 
 ## android
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export ANDROID_TOOL_PATH=$HOME/Library/Android/sdk/tools:$HOME/Library/Android/sdk/platform-tools
-add_to_path $ANDROID_TOOL_PATH
+add_to_path $ANDROID_HOME/tools
+add_to_path $ANDROID_HOME/platform-tools
+add_to_path $ANDROID_HOME/emulator
 
 ## for ruby fork2
-OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 ## anyenv
-if which anyenv > /dev/null; then eval "$(anyenv init -)"; fi
+if type anyenv > /dev/null; then
+  function anyenv_init() {
+    eval "$(anyenv init -)"
+  }
+fi
 
-## goenv
-if which goenv > /dev/null; then eval "$(goenv init -)"; fi
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
-export PATH="$PATH:$HOME/.anyenv/envs/goenv/bin"
+## 各環境の遅延ロード
+function init_env_functions() {
+  function pyenv() {
+    unset -f pyenv
+    anyenv_init
+    eval "$(pyenv init -)"
+    pyenv "$@"
+  }
 
-export GOENV_GOMOD_VERSION_ENABLE=1
+  function python() {
+    unset -f python
+    anyenv_init
+    eval "$(pyenv init -)"
+    python "$@"
+  }
 
+  function pip() {
+    unset -f pip
+    anyenv_init
+    eval "$(pyenv init -)"
+    pip "$@"
+  }
 
-## The next line updates PATH for the Google Cloud SDK.
-if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
+  function rbenv() {
+    unset -f rbenv
+    anyenv_init
+    eval "$(rbenv init -)"
+    rbenv "$@"
+  }
 
-## The next line enables shell command completion for gcloud.
-if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'; fi
+  function ruby() {
+    unset -f ruby
+    anyenv_init
+    eval "$(rbenv init -)"
+    ruby "$@"
+  }
+
+  function bundle() {
+    unset -f bundle
+    anyenv_init
+    eval "$(rbenv init -)"
+    bundle "$@"
+  }
+
+  function nodenv() {
+    unset -f nodenv
+    anyenv_init
+    eval "$(nodenv init -)"
+    nodenv "$@"
+  }
+
+  function node() {
+    unset -f node
+    anyenv_init
+    eval "$(nodenv init -)"
+    node "$@"
+  }
+
+  function npm() {
+    unset -f npm
+    anyenv_init
+    eval "$(nodenv init -)"
+    npm "$@"
+  }
+
+  function init_goenv() {
+    anyenv_init
+    eval "$(goenv init -)"
+    export PATH="$HOME/.goenv/shims:$PATH"
+  }
+
+  function goenv() {
+    unset -f goenv
+    init_goenv
+    if [[ "$1" == "local" || "$1" == "global" || "$1" == "shell" ]]; then
+      goenv "$@"
+      export PATH="$HOME/.goenv/shims:$PATH"
+      rehash
+    else
+      goenv "$@"
+    fi
+  }
+
+  function go() {
+    unset -f go
+    init_goenv
+    go "$@"
+  }
+
+  function jenv() {
+    unset -f jenv
+    anyenv_init
+    eval "$(jenv init -)"
+    jenv "$@"
+  }
+
+  function java() {
+    unset -f java
+    anyenv_init
+    eval "$(jenv init -)"
+    java "$@"
+  }
+
+  function javac() {
+    unset -f javac
+    anyenv_init
+    eval "$(jenv init -)"
+    javac "$@"
+  }
+}
+
+# 最初のコマンド実行時に環境関数を初期化
+init_env_functions
+unset -f init_env_functions 2>/dev/null
 
 ## for react-native
 export REACT_EDITOR=code
 
+## for react-native metro server
+export RCT_METRO_PORT=8082
+
 ## for ruby depreated warnings
-export RUBYOPT='-W:deprecated'
+# export RUBYOPT='-W:deprecated'
 
 ## Cargo
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 ## for secret enviromental variables
 test -r ~/.zsh_private && . ~/.zsh_private
+
+## goenv
+export GOENV_GOMOD_VERSION_ENABLE=1
+export GOPATH=$HOME/go
 
