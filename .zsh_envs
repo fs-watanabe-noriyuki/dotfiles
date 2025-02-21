@@ -1,0 +1,224 @@
+# const
+export CLICOLOR=1
+export LESSOPEN='| /opt/homebrew/Cellar/source-highlight/3.1.9_6/bin/src-hilite-lesspipe.sh %s'
+export LESS='-MR'
+export LANG=ja_JP.UTF-8
+export PS1="\W $"
+export ENV=develop
+
+
+## path
+
+### add PATH avoiding dup
+add_to_path() {
+  for p in "$@"; do
+    if [[ ":$PATH:" != *":$p:"* ]]; then
+      export PATH="$p:$PATH"
+    fi
+  done
+}
+
+add_to_path $HOME/bin
+add_to_path $HOME/.local/bin
+add_to_path /usr/local/bin
+
+### homebrew
+BREW_PATH=/opt/homebrew
+add_to_path $BREW_PATH/bin
+
+### tools
+add_to_path $HOME/development/tool/bin
+
+### yarn
+add_to_path $HOME/.yarn/bin
+
+### anyenv
+add_to_path $HOME/.anyenv/bin
+
+## pip
+add_to_path $HOME/Library/Python/2.7/bin
+
+### imagemagic
+add_to_path $BREW_PATH/opt/imagemagick@6/bin
+
+### openssl
+add_to_path $BREW_PATH/opt/openssl@1.1/bin
+
+### MySQL5.7
+add_to_path $BREW_PATH/opt/mysql@5.7/bin
+
+### TiUP
+add_to_path $HOME/.tiup/bin
+
+### bison
+add_to_path $BREW_PATH/opt/bison/bin
+
+### libxslt
+add_to_path $BREW_PATH/opt/libxslt/bin
+
+export CPPFLAGS="-I/opt/homebrew/opt/libffi/include -I/opt/homebrew/opt/libxslt/include -I/opt/homebrew/opt/openjdk@11/include"
+export LDFLAGS="-L/opt/homebrew/opt/bison/lib -L/opt/homebrew/opt/libffi/lib -L/opt/homebrew/opt/libxslt/lib"
+
+## for bundle install mysql
+## @see https://github.com/brianmario/mysql2/pull/1051
+OPENSSL_PATH="$BREW_PATH/opt/openssl@1.1"
+export LIBRARY_PATH=$LIBRARY_PATH:$OPENSSL_PATH/lib
+export LDFLAGS="-L$OPENSSL_PATH/lib $LDFLAGS"
+# export RUBY_CFLAGS=-DUSE_FFI_CLOSURE_ALLOC
+export CPPFLAGS="-I$OPENSSL_PATH/include $CPPFLAGS"
+export LD_LIBRARY_PATH="$OPENSSL_PATH/lib:$LD_LIBRARY_PATH"
+
+
+## java 11
+#export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+
+## android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+add_to_path $ANDROID_HOME/tools
+add_to_path $ANDROID_HOME/platform-tools
+add_to_path $ANDROID_HOME/emulator
+
+## for ruby fork2
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+## anyenv
+if type anyenv > /dev/null; then
+  function anyenv_init() {
+    eval "$(anyenv init -)"
+  }
+fi
+
+## 各環境の遅延ロード
+function init_env_functions() {
+  function pyenv() {
+    unset -f pyenv
+    anyenv_init
+    eval "$(pyenv init -)"
+    pyenv "$@"
+  }
+
+  function python() {
+    unset -f python
+    anyenv_init
+    eval "$(pyenv init -)"
+    python "$@"
+  }
+
+  function pip() {
+    unset -f pip
+    anyenv_init
+    eval "$(pyenv init -)"
+    pip "$@"
+  }
+
+  function rbenv() {
+    unset -f rbenv
+    anyenv_init
+    eval "$(rbenv init -)"
+    rbenv "$@"
+  }
+
+  function ruby() {
+    unset -f ruby
+    anyenv_init
+    eval "$(rbenv init -)"
+    ruby "$@"
+  }
+
+  function bundle() {
+    unset -f bundle
+    anyenv_init
+    eval "$(rbenv init -)"
+    bundle "$@"
+  }
+
+  function nodenv() {
+    unset -f nodenv
+    anyenv_init
+    eval "$(nodenv init -)"
+    nodenv "$@"
+  }
+
+  function node() {
+    unset -f node
+    anyenv_init
+    eval "$(nodenv init -)"
+    node "$@"
+  }
+
+  function npm() {
+    unset -f npm
+    anyenv_init
+    eval "$(nodenv init -)"
+    npm "$@"
+  }
+
+  function init_goenv() {
+    anyenv_init
+    eval "$(goenv init -)"
+    export PATH="$HOME/.goenv/shims:$PATH"
+  }
+
+  function goenv() {
+    unset -f goenv
+    init_goenv
+    if [[ "$1" == "local" || "$1" == "global" || "$1" == "shell" ]]; then
+      goenv "$@"
+      export PATH="$HOME/.goenv/shims:$PATH"
+      rehash
+    else
+      goenv "$@"
+    fi
+  }
+
+  function go() {
+    unset -f go
+    init_goenv
+    go "$@"
+  }
+
+  function jenv() {
+    unset -f jenv
+    anyenv_init
+    eval "$(jenv init -)"
+    jenv "$@"
+  }
+
+  function java() {
+    unset -f java
+    anyenv_init
+    eval "$(jenv init -)"
+    java "$@"
+  }
+
+  function javac() {
+    unset -f javac
+    anyenv_init
+    eval "$(jenv init -)"
+    javac "$@"
+  }
+}
+
+# 最初のコマンド実行時に環境関数を初期化
+init_env_functions
+unset -f init_env_functions 2>/dev/null
+
+## for react-native
+export REACT_EDITOR=code
+
+## for react-native metro server
+export RCT_METRO_PORT=8082
+
+## for ruby depreated warnings
+# export RUBYOPT='-W:deprecated'
+
+## Cargo
+# . "$HOME/.cargo/env"
+
+## for secret enviromental variables
+test -r ~/.zsh_private && . ~/.zsh_private
+
+## goenv
+export GOENV_GOMOD_VERSION_ENABLE=1
+export GOPATH=$HOME/go
+

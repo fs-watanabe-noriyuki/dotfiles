@@ -8,7 +8,7 @@ do
     ln -snfv ~/dotfiles/"$f" ~/
 done
 
-source ~/.bash_profile
+source ~/.zshrc
 
 cat << END
 

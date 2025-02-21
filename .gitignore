@@ -6,13 +6,13 @@
 !/etc
 !/.vim/bundle/dein.toml
 !/.vim/bundle/dein_lazy.toml
-!/.bash_profile
 !/.zshrc
 !/.tmux.conf
 !/.gitignore
 !/.gitignore_global
 !/.vimrc
-!/.bashrc
+!/.zsh_envs
+!/.zsh_aliases
 # 管理対象のディレクトリ内でも除外したいものはこの下に追加する
 .DS_Store
 .vim/bundle
