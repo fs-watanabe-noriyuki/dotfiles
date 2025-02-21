@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "installing homebrew..."
-which brew >/dev/null 2>&1 || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+which brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "run brew doctor..."
 which brew >/dev/null 2>&1 && brew doctor
@@ -15,28 +15,43 @@ brew upgrade
 
 formulas=(
     anyenv
+    autoconf
     awscli
+    bison
     boost
+    cairo
     circleci
     cmake
     curl
     ffmpeg
     fzf
+    giflib
     git
     gh
     gradle
     imagemagick@6
+    java11
+    jpeg
     jq
     k6
+    libffi
     libiodbc
+    libpng
+    librsvg
+    libtool
+    libxslt
+    libyaml
     maven
     mysql@5.7
     nginx
     openssl
+    pango
+    pkg-config
     postgresql
     protobuf
     pstree
     pwgen
+    readline
     reattach-to-user-namespace
     redis
     rustup-init
@@ -50,9 +65,10 @@ formulas=(
     unixodbc
     wget
     yarn
+    zlib
     zplug
     'openresty/brew/openresty'
-    'vim --with-override-system-vi'
+    vim
 )
 
 echo "start brew install apps..."
@@ -72,7 +88,7 @@ casks=(
     sequel-ace
     slack
     snowflake-snowsql
-    visual-code-studio
+    visual-studio-code
 )
 
 echo "start brew cask install apps..."

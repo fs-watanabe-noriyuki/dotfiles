@@ -26,3 +26,6 @@ alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 alias awsl='aws --endpoint-url http://localhost:4566'
 
 alias aws4='aws --profile fumi4'
+
+## python
+#alias python=/usr/bin/python3
