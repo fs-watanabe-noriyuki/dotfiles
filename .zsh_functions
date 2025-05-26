@@ -1,0 +1,131 @@
+### anyenv functions
+if type anyenv > /dev/null; then
+  function anyenv_init() {
+    eval "$(anyenv init -)"
+  }
+fi
+
+function init_env_functions_later() {
+
+  function pyenv() {
+    unset -f pyenv
+    anyenv_init
+    eval "$(pyenv init -)"
+    pyenv "$@"
+  }
+
+  function python() {
+    unset -f python
+    anyenv_init
+    eval "$(pyenv init -)"
+    python "$@"
+  }
+
+  function pip() {
+    unset -f pip
+    anyenv_init
+    eval "$(pyenv init -)"
+    pip "$@"
+  }
+
+  function rbenv() {
+    unset -f rbenv
+    anyenv_init
+    eval "$(rbenv init -)"
+    rbenv "$@"
+  }
+
+  function ruby() {
+    unset -f ruby
+    anyenv_init
+    eval "$(rbenv init -)"
+    if [ $# -eq 0 ]; then
+      return
+    fi
+    ruby "$@"
+  }
+
+  function bundle() {
+    unset -f bundle
+    anyenv_init
+    eval "$(rbenv init -)"
+    bundle "$@"
+  }
+
+  function nodenv() {
+    unset -f nodenv
+    anyenv_init
+    eval "$(nodenv init -)"
+    nodenv "$@"
+  }
+
+  function node() {
+    unset -f node
+    anyenv_init
+    eval "$(nodenv init -)"
+    node "$@"
+  }
+
+  function npm() {
+    unset -f npm
+    anyenv_init
+    eval "$(nodenv init -)"
+    npm "$@"
+  }
+
+  function init_goenv() {
+    anyenv_init
+    eval "$(goenv init -)"
+    export PATH="$HOME/.goenv/shims:$PATH"
+  }
+
+  function goenv() {
+    unset -f goenv
+    init_goenv
+    if [[ "$1" == "local" || "$1" == "global" || "$1" == "shell" ]]; then
+      goenv "$@"
+      export PATH="$HOME/.goenv/shims:$PATH"
+      rehash
+    else
+      goenv "$@"
+    fi
+  }
+
+  function go() {
+    unset -f go
+    init_goenv
+    go "$@"
+  }
+
+  function jenv() {
+    unset -f jenv
+    anyenv_init
+    eval "$(jenv init -)"
+    jenv "$@"
+  }
+
+  function java() {
+    unset -f java
+    anyenv_init
+    eval "$(jenv init -)"
+    java "$@"
+  }
+
+  function javac() {
+    unset -f javac
+    anyenv_init
+    eval "$(jenv init -)"
+    javac "$@"
+  }
+}
+
+#anyenv_init
+#eval "$(rbenv init -)"
+#eval "$(goenv init -)"
+#export PATH="$HOME/.goenv/shims:$PATH"
+#eval "$(nodenv init -)"
+#eval "$(jenv init -)"
+
+# ターミナル立ち上げの高速化のため、最初のコマンド実行時にanyenv系のコマンドを遅延読み込みする
+init_env_functions_later
+unset -f init_env_functions_later

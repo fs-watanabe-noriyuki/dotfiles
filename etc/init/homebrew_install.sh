@@ -14,6 +14,7 @@ echo "ok. run brew upgrade..."
 brew upgrade
 
 formulas=(
+    antidote
     anyenv
     autoconf
     awscli
@@ -66,7 +67,6 @@ formulas=(
     wget
     yarn
     zlib
-    zplug
     'openresty/brew/openresty'
     vim
 )

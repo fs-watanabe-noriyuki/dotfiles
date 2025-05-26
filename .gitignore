@@ -13,6 +13,8 @@
 !/.vimrc
 !/.zsh_envs
 !/.zsh_aliases
+!/.zsh_functions
+!/.zsh_plugins.txt
 # 管理対象のディレクトリ内でも除外したいものはこの下に追加する
 .DS_Store
 .vim/bundle
