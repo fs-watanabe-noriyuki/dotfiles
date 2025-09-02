@@ -32,3 +32,7 @@ repo = 'Shougo/unite.vim'
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
 
+# open-browser (for previm dependency)
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+

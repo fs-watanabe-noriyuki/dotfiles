@@ -119,13 +119,13 @@ function init_env_functions_later() {
   }
 }
 
-#anyenv_init
-#eval "$(rbenv init -)"
-#eval "$(goenv init -)"
-#export PATH="$HOME/.goenv/shims:$PATH"
-#eval "$(nodenv init -)"
-#eval "$(jenv init -)"
+anyenv_init
+eval "$(rbenv init -)"
+eval "$(goenv init -)"
+export PATH="$HOME/.goenv/shims:$PATH"
+eval "$(nodenv init -)"
+eval "$(jenv init -)"
 
 # ターミナル立ち上げの高速化のため、最初のコマンド実行時にanyenv系のコマンドを遅延読み込みする
-init_env_functions_later
-unset -f init_env_functions_later
+#init_env_functions_later
+#unset -f init_env_functions_later

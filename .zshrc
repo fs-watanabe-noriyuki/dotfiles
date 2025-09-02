@@ -32,3 +32,5 @@ export PATH="/Users/noriyuki.watanabe/.codeium/windsurf/bin:$PATH"
 
 # vscode shell integration
 [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
+
+alias claude="/Users/noriyuki.watanabe/.claude/local/claude"

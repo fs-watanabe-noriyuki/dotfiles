@@ -12,3 +12,7 @@
 erd.pdf
 account_db_schema.sql
 global_db_schema.sql
+
+
+# AI
+.serena/

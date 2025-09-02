@@ -21,7 +21,6 @@ formulas=(
     bison
     boost
     cairo
-    circleci
     cmake
     curl
     ffmpeg
@@ -43,7 +42,6 @@ formulas=(
     libxslt
     libyaml
     maven
-    mysql@5.7
     nginx
     openssl
     pango
@@ -57,6 +55,7 @@ formulas=(
     redis
     rustup-init
     shared-mime-info
+    shfmt
     sl
     source-highlight
     tig
@@ -64,6 +63,7 @@ formulas=(
     translate-shell
     tree
     unixodbc
+    uv
     wget
     yarn
     zlib
